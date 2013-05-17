@@ -1,26 +1,55 @@
-;; load path
+;;load path modifications
 (add-to-list 'load-path "~/.emacs.d/")
 
-;; show line numbers
+;;show line numbers
 (global-linum-mode 1)
-(setq linum-format "%d ") ;; add a gutter after the line numberXF
+(setq linum-format "%4d \u2502 ")
 
-;;Interactively Do Things
+;;ido mode "Interactively Do Things"
 (ido-mode 1)
 (setq ido-enable-flex-matching t)
 (setq ido-everywhere t)
+
+;;set tab width
+(setq default-tab-width 2)
+
+;;set javascript tab width
+(setq js-indent-level 2)
+
+;;auto indent
+(define-key global-map (kbd "RET") 'newline-and-indent)
+
+(load "coffee-mode-master/coffee-mode.el")
+(setq whitespace-action '(auto-cleanup)) ;; automatically clean up bad whitespace
+(setq whitespace-style '(trailing space-before-tab indentation empty space-after-tab)) ;; only show bad whitespace
+(defun coffee-custom ()
+  "coffee-mode-hook"
+ (set (make-local-variable 'tab-width) 2))
+
+(add-hook 'coffee-mode-hook
+  '(lambda() (coffee-custom)))
 
 ;; libraries
 (load "nxhtml/autostart.el")
 ;; M-x mumamo-no-chunk-coloring
 (setq warning-minimum-level :error) 
 
-(load "coffee-mode-master/coffee-mode.el")
-(setq whitespace-action '(auto-cleanup)) ;; automatically clean up bad whitespace
-(setq whitespace-style '(trailing space-before-tab indentation empty space-after-tab)) ;; only show bad whitespace
+;;Auto Mode Alist
+(add-to-list 'auto-mode-alist '("\\.json\\'" . javascript-mode))
+(add-to-list 'auto-mode-alist '("\\.hbs\\'" . html-mode))
+
+;;stylus/jade mode
+(add-to-list 'load-path "~/.emacs.d/vendor/jade-mode")
+(require 'sws-mode)
+(require 'jade-mode)
+(add-to-list 'auto-mode-alist '("\\.styl$" . sws-mode))
+(add-to-list 'auto-mode-alist '("\\.jade$" . jade-mode))
 
 (setq ispell-program-name "aspell")
 (setq ispell-list-command "list")
+
+;;move lines and regions
+(require 'move-lines-region)
 
 ;; super turbo imenu using ido
 (defun ido-goto-symbol (&optional symbol-list)
@@ -70,4 +99,4 @@
                         (string= (car imenu--rescan-item) name))
               (add-to-list 'symbol-names name)
               (add-to-list 'name-and-pos (cons name position))))))))
-    (global-set-key (kbd "M-i") 'ido-goto-symbol) ; or any key you see fit
+    (global-set-key (kbd "M-i") 'ido-goto-symbol) ; or any key you see fit======= end
