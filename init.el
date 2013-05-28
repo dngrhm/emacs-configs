@@ -1,7 +1,10 @@
 ;;load path modifications
 (add-to-list 'load-path "~/.emacs.d/")
 
-;;show line numbers
+;;color theme
+(add-to-list 'load-path "~/.emacs.d/emacs-color-theme-solarized")
+(require 'solarized-dark-theme)
+
 (global-linum-mode 1)
 (setq linum-format "%4d \u2502 ")
 
@@ -31,6 +34,7 @@
 
 ;; libraries
 (load "nxhtml/autostart.el")
+(load "php-mode/php-mode.el")
 ;; M-x mumamo-no-chunk-coloring
 (setq warning-minimum-level :error) 
 
@@ -100,3 +104,15 @@
               (add-to-list 'symbol-names name)
               (add-to-list 'name-and-pos (cons name position))))))))
     (global-set-key (kbd "M-i") 'ido-goto-symbol) ; or any key you see fit======= end
+(custom-set-variables
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(custom-safe-themes (quote ("fc5fcb6f1f1c1bc01305694c59a1a861b008c534cae8d0e48e4d5e81ad718bc6" "1e7e097ec8cb1f8c3a912d7e1e0331caeed49fef6cff220be63bd2a6ba4cc365" default))))
+(custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ )
