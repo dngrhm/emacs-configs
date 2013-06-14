@@ -2,7 +2,7 @@
 (add-to-list 'load-path "~/.emacs.d/")
 
 ;;color theme
-(add-to-list 'load-path "~/.emacs.d/emacs-color-theme-solarized")
+(add-to-list 'load-path "~/.emacs.d/emacs-solarized")
 (require 'solarized-dark-theme)
 
 (global-linum-mode 1)
