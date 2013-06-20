@@ -15,6 +15,11 @@
 
 ;;set tab width
 (setq default-tab-width 2)
+(setq-default indent-tabs-mode nil)
+
+;;set c++ indent
+(setq c-default-style "stroustrup"
+			c-basic-offset 4)
 
 ;;set javascript tab width
 (setq js-indent-level 2)
