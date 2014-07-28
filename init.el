@@ -60,6 +60,10 @@
 ;;move lines and regions
 (require 'move-lines-region)
 
+;;haml mode
+(add-to-list 'load-path "~/.emacs.d/haml-mode")
+(require 'haml-mode)
+
 ;; super turbo imenu using ido
 (defun ido-goto-symbol (&optional symbol-list)
       "Refresh imenu and jump to a place in the buffer using Ido."
@@ -121,3 +125,8 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  )
+
+;; cucumber feature mode
+(add-to-list 'load-path "~/.emacs.d/feature-mode")
+(require 'feature-mode)
+(add-to-list 'auto-mode-alist '("\.feature$" . feature-mode))
