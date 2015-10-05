@@ -1,6 +1,13 @@
 ;;load path modifications
 (add-to-list 'load-path "~/.emacs.d/")
 
+;;windmove
+(windmove-default-keybindings)
+(global-set-key (kbd "C-c k") 'windmove-up)
+(global-set-key (kbd "C-c j") 'windmove-down)
+(global-set-key (kbd "C-c l") 'windmove-right)
+(global-set-key (kbd "C-c h") 'windmove-left)
+
 ;;color theme
 (add-to-list 'load-path "~/.emacs.d/emacs-solarized")
 (require 'solarized-dark-theme)
@@ -130,3 +137,9 @@
 (add-to-list 'load-path "~/.emacs.d/feature-mode")
 (require 'feature-mode)
 (add-to-list 'auto-mode-alist '("\.feature$" . feature-mode))
+
+;;ELPA
+(require 'package)
+(setq package-archives '(("gnu" . "http://elpa.gnu.org/packages/")
+                         ("marmalade" . "http://marmalade-repo.org/packages/")
+                         ("melpa" . "http://melpa.org/packages/")))
