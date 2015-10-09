@@ -8,12 +8,31 @@
 (global-set-key (kbd "C-c l") 'windmove-right)
 (global-set-key (kbd "C-c h") 'windmove-left)
 
+;;ANSI coloring in compilation mode
+(ignore-errors
+  (require 'ansi-color)
+  (defun my-colorize-compilation-buffer ()
+    (when (eq major-mode 'compilation-mode)
+      (ansi-color-apply-on-region compilation-filter-start (point-max))))
+  (add-hook 'compilation-filter-hook 'my-colorize-compilation-buffer))
+
+;;magit
+(global-set-key (kbd "C-x g") 'magit-status)
+
+;;magit-gh-pulls
+(require 'magit-gh-pulls)
+(add-hook 'magit-mode-hook 'turn-on-magit-gh-pulls)
+
 ;;color theme
 (add-to-list 'load-path "~/.emacs.d/emacs-solarized")
 (require 'solarized-dark-theme)
 
 (global-linum-mode 1)
 (setq linum-format "%4d \u2502 ")
+
+;;ansi color
+(add-hook 'shell-mode-hook 'ansi-color-for-comint-mode-on)
+(add-to-list 'comint-output-filter-functions 'ansi-color-process-output)
 
 ;;ido mode "Interactively Do Things"
 (ido-mode 1)
@@ -139,7 +158,7 @@
 (add-to-list 'auto-mode-alist '("\.feature$" . feature-mode))
 
 ;;ELPA
-(require 'package)
-(setq package-archives '(("gnu" . "http://elpa.gnu.org/packages/")
-                         ("marmalade" . "http://marmalade-repo.org/packages/")
-                         ("melpa" . "http://melpa.org/packages/")))
+;;(require 'package)
+;;(setq package-archives '(("gnu" . "http://elpa.gnu.org/packages/")
+;;                         ("marmalade" . "http://marmalade-repo.org/packages/")
+;;                         ("melpa" . "http://melpa.org/packages/")))
