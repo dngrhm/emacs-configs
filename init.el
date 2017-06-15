@@ -19,10 +19,6 @@
 ;;magit
 (global-set-key (kbd "C-x g") 'magit-status)
 
-;;magit-gh-pulls
-(require 'magit-gh-pulls)
-(add-hook 'magit-mode-hook 'turn-on-magit-gh-pulls)
-
 ;;color theme
 (add-to-list 'load-path "~/.emacs.d/emacs-solarized")
 (require 'solarized-dark-theme)
